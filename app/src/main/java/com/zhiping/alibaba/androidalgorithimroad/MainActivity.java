@@ -1,14 +1,12 @@
 package com.zhiping.alibaba.androidalgorithimroad;
 
 import android.app.Activity;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Window;
-import android.view.WindowManager;
 
 import com.zhiping.alibaba.androidalgorithimroad.algorithim.sort.BubbleSort;
 import com.zhiping.alibaba.androidalgorithimroad.algorithim.sort.BubbleView;
+import com.zhiping.alibaba.androidalgorithimroad.algorithim.sort.CocksailSort;
 
 public class MainActivity extends Activity implements OnTCallback {
 
@@ -19,7 +17,8 @@ public class MainActivity extends Activity implements OnTCallback {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         bv = (BubbleView) findViewById(R.id.bv);
-        sort();
+//        sort();
+        CocksailSort();
     }
 
     private void sort(){
@@ -36,12 +35,26 @@ public class MainActivity extends Activity implements OnTCallback {
         }
     }
 
+    private void CocksailSort(){
+        final CocksailSort sort = new CocksailSort();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                sort.cocksailSort(data,MainActivity.this);
+            }
+        }).start();
+
+        for (int i=0;i < data.length; i++) {
+            Log.d("MainActivity", "sort: " + data[i]);
+        }
+    }
+
     @Override
     public void onCallback() {
         bv.setData(data);
         bv.postInvalidate();
         try {
-            Thread.sleep(1000);
+            Thread.sleep(300);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

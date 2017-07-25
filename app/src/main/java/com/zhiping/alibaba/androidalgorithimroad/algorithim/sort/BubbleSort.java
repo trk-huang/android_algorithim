@@ -18,7 +18,7 @@ public class BubbleSort {
      * @param i
      * @param j
      */
-    private void exChange(int[] data, int i, int j) {
+    public void exChange(int[] data, int i, int j) {
         int temp = data[i];
         data[i] = data[j];
         data[j] = temp;
