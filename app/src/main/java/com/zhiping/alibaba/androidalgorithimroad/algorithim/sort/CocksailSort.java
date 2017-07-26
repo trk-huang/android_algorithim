@@ -8,7 +8,7 @@ import com.zhiping.alibaba.androidalgorithimroad.MainActivity;
 
 public class CocksailSort extends BubbleSort {
 
-    public void cocksailSort(final int[] data, final MainActivity activity) {
+    public void cocksailSort(final int[] data,  MainActivity activity) {
         int right = data.length - 1;
         int left = 0;
         while (left < right) {
