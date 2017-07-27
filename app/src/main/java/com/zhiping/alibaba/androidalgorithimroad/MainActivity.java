@@ -8,6 +8,7 @@ import com.zhiping.alibaba.androidalgorithimroad.algorithim.sort.BubbleSort;
 import com.zhiping.alibaba.androidalgorithimroad.algorithim.sort.BubbleView;
 import com.zhiping.alibaba.androidalgorithimroad.algorithim.sort.ChoiceSort;
 import com.zhiping.alibaba.androidalgorithimroad.algorithim.sort.CocksailSort;
+import com.zhiping.alibaba.androidalgorithimroad.algorithim.sort.InsertSort;
 
 public class MainActivity extends Activity implements OnTCallback {
 
@@ -21,9 +22,24 @@ public class MainActivity extends Activity implements OnTCallback {
         bv = (BubbleView) findViewById(R.id.bv);
 //        sort();
 //        CocksailSort();
-        choiceSort();
+//        choiceSort();
+        insertSort();
     }
 
+    private void insertSort() {
+        final InsertSort sort = new InsertSort();
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                sort.insertSort(data, MainActivity.this);
+            }
+        }).start();
+
+        for (int i = 0; i < data.length; i++) {
+            Log.d("MainActivity", "sort: " + data[i]);
+        }
+    }
 
     private void sort() {
         final BubbleSort sort = new BubbleSort();
