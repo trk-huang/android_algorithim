@@ -23,7 +23,23 @@ public class MainActivity extends Activity implements OnTCallback {
 //        sort();
 //        CocksailSort();
 //        choiceSort();
-        insertSort();
+//        insertSort();
+        insertMiddleSort();
+    }
+
+    private void insertMiddleSort() {
+        final InsertSort sort = new InsertSort();
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                sort.insertSort(data, MainActivity.this);
+            }
+        }).start();
+
+        for (int i = 0; i < data.length; i++) {
+            Log.d("MainActivity", "sort: " + data[i]);
+        }
     }
 
     private void insertSort() {
