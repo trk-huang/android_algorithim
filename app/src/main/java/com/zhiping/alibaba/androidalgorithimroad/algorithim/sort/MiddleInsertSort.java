@@ -17,7 +17,7 @@ public class MiddleInsertSort extends BubbleSort {
             get = datas[i];
             left = 0;
             right = i - 1;
-            while (left < right) {
+            while (left <= right) {
                 int middle = (left + right) / 2;
                 if (datas[middle] > get) {
                     left = middle + 1;

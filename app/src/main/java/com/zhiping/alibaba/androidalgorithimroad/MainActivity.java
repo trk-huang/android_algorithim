@@ -9,6 +9,8 @@ import com.zhiping.alibaba.androidalgorithimroad.algorithim.sort.BubbleView;
 import com.zhiping.alibaba.androidalgorithimroad.algorithim.sort.ChoiceSort;
 import com.zhiping.alibaba.androidalgorithimroad.algorithim.sort.CocksailSort;
 import com.zhiping.alibaba.androidalgorithimroad.algorithim.sort.InsertSort;
+import com.zhiping.alibaba.androidalgorithimroad.algorithim.sort.MiddleInsertSort;
+import com.zhiping.alibaba.androidalgorithimroad.algorithim.sort.ShellSort;
 
 public class MainActivity extends Activity implements OnTCallback {
 
@@ -25,15 +27,31 @@ public class MainActivity extends Activity implements OnTCallback {
 //        choiceSort();
 //        insertSort();
         insertMiddleSort();
+//        shellSort();
     }
 
-    private void insertMiddleSort() {
-        final InsertSort sort = new InsertSort();
+    private void shellSort() {
+        final ShellSort sort = new ShellSort();
 
         new Thread(new Runnable() {
             @Override
             public void run() {
-                sort.insertSort(data, MainActivity.this);
+                sort.shellSort(data, MainActivity.this);
+            }
+        }).start();
+
+        for (int i = 0; i < data.length; i++) {
+            Log.d("MainActivity", "sort: " + data[i]);
+        }
+    }
+
+    private void insertMiddleSort() {
+        final MiddleInsertSort sort = new MiddleInsertSort();
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                sort.middleInsertSort(data, MainActivity.this);
             }
         }).start();
 
